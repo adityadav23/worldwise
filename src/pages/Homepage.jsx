@@ -5,7 +5,6 @@ import PageNav from "../components/PageNav";
 export default function Homepage() {
   return (
     <main className={styles.homepage}>
-      <a href="/pricing">Pricing</a>
       <PageNav />
       <section>
         <h1>
