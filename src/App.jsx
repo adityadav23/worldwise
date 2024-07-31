@@ -6,7 +6,6 @@ import Login from './pages/Login';
 import PageNotFound from './pages/PageNotFound'
 import AppLayout from './pages/AppLayout';
 import CityList from './components/CityList';
-import { useEffect, useState } from 'react';
 import CountryList from './components/CountryList';
 import City from './components/City';
 import Form from './components/Form';
