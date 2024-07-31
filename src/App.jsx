@@ -16,8 +16,7 @@ export default function App(){
 
   return (
     <div>
-      <h1>Worldwise!!</h1>
-        <CitiesProvider>
+    <CitiesProvider>
     <BrowserRouter>
     <Routes>
     <Route index element={<Homepage />} />
