@@ -15,7 +15,7 @@ export default function CityItem({city}){
       deleteCity
        } = useCities();
     const { cityName, emoji, date, id, position } = city;
-  
+    if(!city.position)console.log({city})
     async function handleClick(e) {
       e.preventDefault();
       await deleteCity(id);
