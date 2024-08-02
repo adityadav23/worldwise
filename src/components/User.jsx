@@ -1,4 +1,7 @@
+import { useEffect } from "react";
+import { useAuth } from "../contexts/FakeAuthContext";
 import styles from "./User.module.css";
+import { useNavigate } from "react-router-dom";
 
 const FAKE_USER = {
   name: "Jack",
@@ -8,11 +11,21 @@ const FAKE_USER = {
 };
 
 function User() {
-  const user = FAKE_USER;
+  // const user = FAKE_USER;
+  const {logout,user, isAuthenticated} = useAuth();
+  const navigate = useNavigate();
+  function handleClick() {
+    logout();
+  }
 
-  function handleClick() {}
+  useEffect(function(){
+    if(!isAuthenticated){
+      navigate('/')
+    }
+  }, [isAuthenticated])
 
   return (
+    isAuthenticated &&
     <div className={styles.user}>
       <img src={user.avatar} alt={user.name} />
       <span>Welcome, {user.name}</span>
