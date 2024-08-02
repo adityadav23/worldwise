@@ -62,22 +62,26 @@ function CitiesProvider({children}){
       }
     }
   
-    // async function deleteCity(id) {
-    //   // dispatch({ type: "loading" });
-  
-    //   try {
-    //     await fetch(`${BASE_URL}/cities/${id}`, {
-    //       method: "DELETE",
-    //     });
-  
-    //     // dispatch({ type: "city/deleted", payload: id });
-    //   } catch {
-    //     // dispatch({
-    //     //   type: "rejected",
-    //     //   payload: "There was an error deleting the city...",
-    //     // });
-    //   }
-    // }
+    async function deleteCity(id) {
+      // dispatch({ type: "loading" });
+
+      try {
+        setIsLoading(true)
+        await fetch(`${BASE_URL}/cities/${id}`, {
+          method: "DELETE",
+        });
+        
+        setCities(cities=> cities.filter(city=>city.id !== id))
+        // dispatch({ type: "city/deleted", payload: id });
+      } catch {
+        // dispatch({
+        //   type: "rejected",
+        //   payload: "There was an error deleting the city...",
+        // });
+      }finally{
+        setIsLoading(false)
+      }
+    }
   return <CitiesContext.Provider 
     value={{
     cities, 
@@ -85,6 +89,7 @@ function CitiesProvider({children}){
     getCity,
     currentCity,
     createCity,
+    deleteCity,
     }}
   >
     {children}
